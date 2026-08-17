@@ -479,6 +479,67 @@
       color: var(--ink-mute);
     }
 
+    /* 微信二维码弹窗 */
+    button.btn {
+      font-family: inherit;
+      font-size: inherit;
+      cursor: pointer;
+    }
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .modal.open { display: flex; }
+    .modal-mask {
+      position: absolute;
+      inset: 0;
+      background: rgba(20, 16, 12, 0.45);
+      -webkit-backdrop-filter: blur(2px);
+      backdrop-filter: blur(2px);
+    }
+    .modal-card {
+      position: relative;
+      background: var(--bg);
+      border: 1px solid var(--rule);
+      border-radius: 12px;
+      padding: 28px 28px 22px;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+      max-width: 320px;
+      width: 100%;
+    }
+    .modal-card img {
+      width: 220px;
+      height: 220px;
+      object-fit: contain;
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      background: #fff;
+    }
+    .modal-card p {
+      margin: 14px 0 0;
+      font-size: 14px;
+      color: var(--ink-soft);
+    }
+    .modal-close {
+      position: absolute;
+      top: 8px;
+      right: 12px;
+      border: none;
+      background: none;
+      font-size: 24px;
+      line-height: 1;
+      color: var(--ink-mute);
+      cursor: pointer;
+      padding: 4px 6px;
+    }
+    .modal-close:hover { color: var(--ink); }
+
     /* ===== 侧边栏 ===== */
     .sidebar { font-size: 14px; }
     .sidebar .widget { margin-bottom: 36px; }
@@ -751,6 +812,7 @@
             <p>如果你有合作意向，或者只是想打个招呼，欢迎随时联系我。</p>
             <div class="contact-actions">
               <a href="mailto:yulingmvp@foxmail.com" class="btn">📧 给我发邮件</a>
+              <button type="button" class="btn" id="wechat-btn">💬 微信</button>
               <a href="https://github.com/yuling170916" target="_blank" rel="noopener" class="btn">GitHub →</a>
               <a href="https://www.xiaohongshu.com/user/profile/688b09cf0000000028035fe0" target="_blank" rel="noopener" class="btn">小红书 →</a>
               <a href="https://www.woshipm.com/u/335469" target="_blank" rel="noopener" class="btn">人人都是产品经理 →</a>
@@ -831,6 +893,35 @@
       <p class="footer-copy"><span class="brand-line">于铃 · AI 产品经理</span>　© 2026 于铃 的个人主页 · 用 ❤️ 打造</p>
     </div>
   </footer>
+
+  <!-- 微信二维码弹窗 -->
+  <div class="modal" id="wechat-modal" role="dialog" aria-modal="true" aria-labelledby="wechat-modal-title">
+    <div class="modal-mask" data-close></div>
+    <div class="modal-card">
+      <button type="button" class="modal-close" data-close aria-label="关闭">×</button>
+      <img id="wechat-qr-img" src="wechat-qr.png" alt="微信二维码">
+      <p id="wechat-modal-title">扫码添加微信</p>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var modal = document.getElementById('wechat-modal');
+      var btn = document.getElementById('wechat-btn');
+      if (!modal || !btn) return;
+      btn.addEventListener('click', function () {
+        modal.classList.add('open');
+      });
+      modal.addEventListener('click', function (e) {
+        if (e.target.closest('[data-close]')) {
+          modal.classList.remove('open');
+        }
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') modal.classList.remove('open');
+      });
+    })();
+  </script>
 
 </body>
 </html>
