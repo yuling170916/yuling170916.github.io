@@ -3,676 +3,780 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>我的个人主页</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <title>于铃 · AI 产品经理</title>
+  <meta name="description" content="于铃，十年从交互到 AI 产品经理，始终探索 AI 前沿，专注让 AI 融入真实业务并产出可验证的交付结果。">
   <style>
-    /* ===== Superr 设计令牌 ===== */
+    /* ===== 设计令牌：极简 · 内容优先（参考 rui.juzi.bot）===== */
     :root {
-      /* 颜色 */
-      --color-cream-paper: #fdfbf9;   /* 画布 / 卡片 / 按钮填充 —— 暖白纸 */
-      --color-charcoal: #171717;      /* 墨色 —— 边框、分隔、结构线 */
-      --color-cocoa-ink: #2b1a07;     /* 可可墨 —— 标题、装饰边框 */
-      --color-true-black: #000000;
-      --color-dew-drop: #f7efe9;      /* 露滴 —— 次级表面色调 */
-      --color-marker-orange: #ff6f1e; /* 马克笔橙 —— 手写批注 / 强调 / 页脚带 */
-      --color-burnt-sienna: #ce500a;  /* 焦赭 —— 更深的橙，正文/边框 */
-      --color-sky-sticker: #3b82f6;   /* 仅装饰 */
-      --color-bubblegum-sticker: #ff66cf; /* 仅装饰 */
-      --color-sprout-sticker: #22c55e;/* 绿色描边 —— 标签 / 分隔 / 聚焦边缘 */
-      --color-shadow-mist: #bebcbb;
-
-      /* 字体 */
-      --font-gelica: 'Nunito', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      --font-geist: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-
-      /* 字阶 */
-      --text-caption: 16px;  --leading-caption: 1.5;
-      --text-body-sm: 18px;  --leading-body-sm: 1.5;
-      --text-body: 20px;     --leading-body: 1.5;
-      --text-subheading: 24px; --leading-subheading: 1.4;
-      --text-heading-sm: 28px; --leading-heading-sm: 1.4;
-      --text-heading: 36px;  --leading-heading: 1.2;
-      --text-heading-lg: 46px; --leading-heading-lg: 1.2;
-      --text-display: 104px; --leading-display: 1.08;
-
-      /* 间距 */
-      --spacing-4: 4px; --spacing-8: 8px; --spacing-12: 12px;
-      --spacing-16: 16px; --spacing-20: 20px; --spacing-24: 24px;
-      --spacing-28: 28px; --spacing-32: 32px; --spacing-40: 40px;
-      --spacing-48: 48px; --spacing-64: 64px; --spacing-116: 116px;
-
-      /* 布局 */
-      --page-max-width: 1200px;
-      --section-gap: 64px;
-      --card-padding: 32px;
-      --element-gap: 12px;
-
-      /* 圆角 */
-      --radius-tags: 20px;
-      --radius-cards: 12px;
-      --radius-footer: 56px;
-      --radius-inputs: 8px;
-      --radius-buttons: 20px;
-
-      /* 阴影（耳语般轻盈） */
-      --shadow-lg: rgba(0,0,0,0.06) 0px 2px 20px 0px;
-      --shadow-subtle: rgba(0,0,0,0.25) 0px 1px 2px 0px;
+      --bg: #fdfcfe;
+      --bg-soft: #f6f3fb;
+      --bg-soft-2: #efeaf8;
+      --ink: #2a2436;
+      --ink-soft: #4b4360;
+      --ink-mute: #7d7590;
+      --ink-faint: #9d96b0;
+      --rule: #e6e1f0;
+      --accent: #8b5cf6;
+      --accent-hover: #7c3aed;
+      --max: 1080px;
     }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #1b1726;
+        --bg-soft: #262036;
+        --bg-soft-2: #312945;
+        --ink: #ece7f5;
+        --ink-soft: #c6bdd9;
+        --ink-mute: #9489ad;
+        --ink-faint: #6f6488;
+        --rule: #393050;
+        --accent: #b29ef5;
+        --accent-hover: #c9bdf8;
+      }
+    }
+
+    * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
 
-    body {
-      font-family: var(--font-geist);
-      background: var(--color-cream-paper);
-      color: var(--color-charcoal);
-      font-size: var(--text-body);
-      line-height: var(--leading-body);
-      letter-spacing: normal;
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "PingFang SC",
+                   "Hiragino Sans GB", "Helvetica Neue", "Microsoft YaHei",
+                   "WenQuanYi Micro Hei", Helvetica, Arial, sans-serif;
+      font-size: 15px;
+      line-height: 1.75;
       -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
+      text-rendering: optimizeLegibility;
     }
 
-    a { color: inherit; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { color: var(--accent-hover); text-decoration: underline; }
+
+    .wrap {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+
+    section { scroll-margin-top: 96px; }
 
     /* ===== 顶部导航 ===== */
-    nav {
+    .topnav {
       position: sticky;
       top: 0;
-      z-index: 100;
-      background: rgba(253, 251, 249, 0.92);
-      backdrop-filter: blur(8px);
-      border-bottom: 1.5px solid var(--color-charcoal);
+      z-index: 50;
+      background: var(--bg);
+      border-bottom: 1px solid var(--rule);
+      padding: 22px 0;
     }
-    .nav-inner {
-      max-width: var(--page-max-width);
-      margin: 0 auto;
-      padding: 0 24px;
-      height: 72px;
+    .topnav .row {
       display: flex;
-      align-items: center;
-      gap: 32px;
-    }
-    .brand-mark {
-      font-size: 26px;
-      line-height: 1;
-      color: var(--color-charcoal);
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-    }
-    .nav-links {
-      display: flex;
-      gap: 28px;
-      list-style: none;
-      flex: 1;
-    }
-    .nav-links a {
-      font-family: var(--font-geist);
-      font-weight: 500;
-      font-size: 18px;
-      color: var(--color-charcoal);
-      text-decoration: none;
-      transition: color 0.2s ease;
-    }
-    .nav-links a:hover { color: var(--color-marker-orange); }
-
-    /* 药丸描边按钮（非填充） */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      text-decoration: none;
-      font-family: var(--font-gelica);
-      font-weight: 500;
-      font-size: 16px;
-      line-height: 1;
-      color: var(--color-charcoal);
-      background: var(--color-cream-paper);
-      border: 1.5px solid var(--color-charcoal);
-      border-radius: var(--radius-buttons);
-      padding: 11px 28px;
-      box-shadow: var(--shadow-subtle);
-      transition: transform 0.15s ease, background 0.15s ease;
-      white-space: nowrap;
-    }
-    .btn:hover { transform: translateY(-2px); background: var(--color-dew-drop); }
-    .btn .arrow { transition: transform 0.15s ease; }
-    .btn:hover .arrow { transform: translateX(3px); }
-
-    /* ===== 主视觉（两栏不对称） ===== */
-    .hero {
-      max-width: var(--page-max-width);
-      margin: 0 auto;
-      padding: 80px 24px 64px;
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 48px;
-      align-items: center;
-    }
-    .hero-left { position: relative; }
-
-    /* 手写批注 */
-    .hand-caption {
-      display: inline-block;
-      font-family: var(--font-gelica);
-      font-weight: 400;
-      font-size: 22px;
-      color: var(--color-marker-orange);
-      transform: rotate(-4deg);
-      margin-bottom: 24px;
-    }
-
-    .hero h1 {
-      font-family: var(--font-gelica);
-      font-weight: 800;
-      font-size: clamp(52px, 8vw, 96px);
-      line-height: 1.08;
-      letter-spacing: normal;
-      color: var(--color-cocoa-ink);
-      margin-bottom: 24px;
-    }
-
-    .hero-sub {
-      font-family: var(--font-geist);
-      font-size: var(--text-body);
-      line-height: var(--leading-body);
-      color: var(--color-charcoal);
-      max-width: 520px;
-      margin-bottom: 32px;
-    }
-
-    /* 马克笔高亮（橙色 + 手绘下划线） */
-    .marker {
-      color: var(--color-marker-orange);
-      font-weight: 600;
-      position: relative;
-      white-space: nowrap;
-    }
-    .marker::after {
-      content: "";
-      position: absolute;
-      left: -1%;
-      right: -1%;
-      bottom: -3px;
-      height: 9px;
-      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 12' preserveAspectRatio='none'%3E%3Cpath d='M2 8 Q 12 2 24 8 T 48 8 T 72 8 T 96 8 T 118 8' fill='none' stroke='%23ff6f1e' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center / 100% 100%;
-    }
-
-    .hero-cta { display: flex; flex-direction: column; gap: 12px; align-items: flex-start; }
-    .hero-cta .quiet {
-      font-family: var(--font-gelica);
-      font-size: 16px;
-      color: var(--color-cocoa-ink);
-      padding-left: 4px;
-    }
-
-    /* 右侧：姓名标签贴纸 */
-    .hero-right {
-      position: relative;
-      display: flex;
-      justify-content: center;
-      padding: 24px 0;
-    }
-    .name-label {
-      background: #ffffff;
-      border: 1.5px solid var(--color-charcoal);
-      border-radius: 8px;
-      padding: 28px 24px;
-      width: 280px;
-      transform: rotate(3deg);
-      box-shadow: var(--shadow-lg);
-      position: relative;
-      z-index: 2;
-    }
-    .name-label .label-head {
-      font-family: var(--font-geist);
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--color-fog, #93979f);
-      margin-bottom: 16px;
-      display: flex;
+      align-items: baseline;
       justify-content: space-between;
-    }
-    .name-label .field {
-      border-top: 1px dashed var(--color-charcoal);
-      padding: 12px 0;
-    }
-    .name-label .field:last-child { border-bottom: 1px dashed var(--color-charcoal); }
-    .name-label .field .k {
-      font-family: var(--font-geist);
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: #93979f;
-      margin-bottom: 2px;
-    }
-    .name-label .field .v {
-      font-family: var(--font-gelica);
-      font-size: 22px;
-      font-weight: 600;
-      color: var(--color-charcoal);
-    }
-
-    /* 贴纸插画 */
-    .sticker {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 54px;
-      height: 54px;
-      background: #ffffff;
-      border: 2px solid var(--color-charcoal);
-      border-radius: 12px;
-      font-size: 26px;
-      box-shadow: var(--shadow-lg);
-      position: absolute;
-    }
-    .sticker.st1 { top: 0; left: 12%; transform: rotate(-8deg); }
-    .sticker.st2 { top: 6px; right: 6%; transform: rotate(10deg); }
-    .sticker.st3 { bottom: 4px; left: 4%; transform: rotate(-12deg); }
-    .sticker.st4 { bottom: -8px; right: 16%; transform: rotate(7deg); }
-    .sticker.st5 { top: 46%; left: -4%; transform: rotate(14deg); }
-
-    /* ===== 贴纸分隔带 ===== */
-    .sticker-divider {
-      border-top: 1.5px dashed var(--color-charcoal);
-      border-bottom: 1.5px dashed var(--color-charcoal);
-      padding: 20px 0;
-      display: flex;
-      justify-content: center;
       gap: 24px;
-      overflow: hidden;
+      flex-wrap: wrap;
     }
-    .sticker-divider .sticker {
-      position: static;
-      flex-shrink: 0;
-    }
-    .sticker-divider .sticker:nth-child(1) { transform: rotate(-6deg); }
-    .sticker-divider .sticker:nth-child(2) { transform: rotate(8deg); }
-    .sticker-divider .sticker:nth-child(3) { transform: rotate(-10deg); }
-    .sticker-divider .sticker:nth-child(4) { transform: rotate(12deg); }
-    .sticker-divider .sticker:nth-child(5) { transform: rotate(-5deg); }
-    .sticker-divider .sticker:nth-child(6) { transform: rotate(9deg); }
-
-    /* ===== 区块 ===== */
-    section { padding: var(--section-gap) 24px; }
-    .container { max-width: var(--page-max-width); margin: 0 auto; }
-
-    .section-header { margin-bottom: 40px; }
-    .section-header .hand-caption {
-      display: inline-block;
+    .topnav .brand {
       font-size: 20px;
-      transform: rotate(-3deg);
-      margin-bottom: 12px;
+      font-weight: 700;
+      color: var(--ink);
+      letter-spacing: -0.01em;
     }
-    .section-header h2 {
-      font-family: var(--font-gelica);
-      font-weight: 800;
-      font-size: clamp(36px, 5vw, 46px);
-      line-height: var(--leading-heading-lg);
-      letter-spacing: normal;
-      color: var(--color-cocoa-ink);
+    .topnav .brand a { color: var(--ink); text-decoration: none; }
+    .topnav .brand a:hover { color: var(--accent); }
+    .topnav .brand .tagline {
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--ink-mute);
+      margin-left: 10px;
+    }
+    .topnav nav {
+      display: flex;
+      align-items: baseline;
+      gap: 22px;
+      font-size: 14px;
+    }
+    .topnav nav a {
+      color: var(--ink-soft);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .topnav nav a:hover,
+    .topnav nav a.active { color: var(--accent); }
+    .topnav nav a.nav-ext {
+      margin-left: 6px;
+      padding: 2px 10px;
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      font-size: 13px;
+      color: var(--ink-soft);
+      transition: all .15s;
+    }
+    .topnav nav a.nav-ext:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+      background: rgba(139, 92, 246, 0.08);
+      text-decoration: none;
     }
 
-    /* ===== 关于我 ===== */
-    .about-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: var(--element-gap);
+    /* ===== 主视觉 ===== */
+    .hero {
+      padding: 56px 0 8px;
     }
-    .about-card {
-      background: var(--color-dew-drop);
-      border: 1.5px solid var(--color-charcoal);
-      border-radius: var(--radius-cards);
-      padding: var(--card-padding);
-      box-shadow: var(--shadow-lg);
-    }
-    .about-card .emoji { font-size: 32px; display: block; margin-bottom: 12px; }
-    .about-card h3 {
-      font-family: var(--font-gelica);
+    .hero h1 {
+      font-size: 40px;
       font-weight: 700;
-      font-size: var(--text-heading-sm);
-      color: var(--color-charcoal);
+      margin: 0 0 14px;
+      letter-spacing: -0.01em;
+      line-height: 1.25;
+    }
+    .hero .hero-sub {
+      font-size: 16px;
+      color: var(--ink-soft);
+      margin: 0;
+      max-width: 560px;
+    }
+    .hero .hl {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    /* ===== 目录卡片（三张） ===== */
+    .home-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin: 36px 0 12px;
+    }
+    .home-card {
+      position: relative;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 18px;
+      padding: 22px 24px;
+      background: var(--bg-soft);
+      border: 1px solid var(--rule);
+      border-radius: 6px;
+      color: var(--ink);
+      text-decoration: none;
+      transition: border-color .15s, transform .15s, box-shadow .15s;
+    }
+    .home-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+      text-decoration: none;
+    }
+    .home-card .hc-num {
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+      font-variant-numeric: tabular-nums;
+      letter-spacing: -0.02em;
+    }
+    .home-card .hc-meta { min-width: 0; }
+    .home-card h3 {
+      font-size: 16px;
+      font-weight: 700;
+      margin: 0 0 4px;
+      color: var(--ink);
+      letter-spacing: -0.005em;
+    }
+    .home-card .hc-meta p {
+      font-size: 12px;
+      color: var(--ink-mute);
+      margin: 0;
+      line-height: 1.5;
+    }
+    .home-card .hc-arrow {
+      font-size: 18px;
+      color: var(--ink-mute);
+      transition: color .15s, transform .15s;
+    }
+    .home-card:hover .hc-arrow {
+      color: var(--accent);
+      transform: translateX(3px);
+    }
+
+    /* ===== 双栏布局 ===== */
+    .cols {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 260px;
+      gap: 56px;
+      padding: 48px 0 64px;
+    }
+
+    /* ===== 主栏 ===== */
+    .feed section { margin-bottom: 56px; }
+    .feed section:last-child { margin-bottom: 0; }
+
+    .feed-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 22px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--ink);
+    }
+    .feed-head h2 {
+      font-size: 18px;
+      font-weight: 700;
+      margin: 0;
+      color: var(--ink);
+      letter-spacing: -0.005em;
+    }
+    .feed-head .feed-more {
+      font-size: 13px;
+      color: var(--ink-soft);
+      text-decoration: none;
+    }
+    .feed-head .feed-more:hover { color: var(--accent); }
+
+    /* 文章条目 */
+    .feed article.entry {
+      padding: 4px 0 28px;
+      margin-bottom: 28px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .feed article.entry:last-child { border-bottom: none; margin-bottom: 0; }
+    .entry-head {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      flex-wrap: wrap;
       margin-bottom: 8px;
     }
-    .about-card p {
-      font-family: var(--font-geist);
-      font-size: var(--text-body-sm);
-      line-height: var(--leading-body-sm);
-      color: var(--color-charcoal);
+    .entry-title {
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 1.4;
+      letter-spacing: -0.01em;
+      margin: 0;
+    }
+    .entry-title .emoji { margin-right: 6px; }
+    .entry-cat {
+      padding: 1px 8px;
+      background: var(--bg-soft);
+      border-radius: 3px;
+      font-size: 12px;
+      color: var(--ink-soft);
+      line-height: 1.6;
+    }
+    .entry-text {
+      font-size: 15px;
+      line-height: 1.85;
+      color: var(--ink-soft);
+      margin: 0;
+    }
+    .entry-more {
+      display: inline-block;
+      margin-top: 10px;
+      font-size: 14px;
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .entry-more:hover { text-decoration: underline; }
+
+    /* 项目卡片（带封面图） */
+    .project-entry {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 20px;
+      align-items: center;
+      padding: 4px 0 28px;
+      margin-bottom: 28px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .project-entry:last-child { border-bottom: none; margin-bottom: 0; }
+    .project-cover {
+      display: block;
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      overflow: hidden;
+      aspect-ratio: 16 / 10;
+      background: var(--bg-soft);
+    }
+    .project-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .3s ease;
+    }
+    .project-entry:hover .project-cover img { transform: scale(1.04); }
+    .project-cover.contain img { object-fit: contain; padding: 12px; }
+
+    /* 终端风格封面（GitHub） */
+    .project-cover.cover-code {
+      display: flex;
+      flex-direction: column;
+      background: #171126;
+      border-color: #2c2350;
+    }
+    .cover-code .code-bar {
+      display: flex;
+      gap: 6px;
+      padding: 9px 12px;
+      border-bottom: 1px solid rgba(179, 160, 230, 0.18);
+    }
+    .cover-code .code-bar i {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      display: block;
+    }
+    .cover-code .code-bar i:nth-child(1) { background: #ff5f57; }
+    .cover-code .code-bar i:nth-child(2) { background: #febc2e; }
+    .cover-code .code-bar i:nth-child(3) { background: #28c840; }
+    .cover-code .code-body {
+      flex: 1;
+      padding: 12px 14px;
+      font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+      font-size: 12px;
+      line-height: 1.6;
+      color: #e4def0;
+      overflow: hidden;
+    }
+    .cover-code .code-line {
+      display: block;
+      white-space: nowrap;
+    }
+    .cover-code .c-num {
+      display: inline-block;
+      width: 16px;
+      margin-right: 10px;
+      color: #6f6488;
+      text-align: right;
+      user-select: none;
+    }
+    .cover-code .c-kw { color: #b29ef5; }
+    .cover-code .c-var { color: #f5f1fb; font-weight: 600; }
+    .cover-code .c-str { color: #cbbef5; }
+    .project-body .entry-head { margin-bottom: 8px; }
+    .project-body .entry-title { font-size: 18px; }
+
+    @media (max-width: 560px) {
+      .project-entry { grid-template-columns: 1fr; gap: 12px; align-items: start; }
+      .project-cover { aspect-ratio: 16 / 9; }
     }
 
-    /* ===== 技能（药丸标签） ===== */
-    .skill-group { margin-bottom: 32px; }
+    /* 技能分组 */
+    .skill-group { margin-bottom: 28px; }
+    .skill-group:last-child { margin-bottom: 0; }
     .skill-group .group-label {
-      font-family: var(--font-gelica);
+      font-size: 15px;
       font-weight: 600;
-      font-size: 20px;
-      color: var(--color-marker-orange);
-      transform: rotate(-2deg);
-      display: inline-block;
-      margin-bottom: 16px;
+      color: var(--ink);
+      margin: 0 0 12px;
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+    }
+    .skill-group .group-label .count {
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--ink-faint);
     }
     .tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
+      gap: 8px;
     }
     .tag {
-      font-family: var(--font-gelica);
-      font-weight: 500;
-      font-size: 16px;
-      color: var(--color-charcoal);
-      background: var(--color-cream-paper);
-      border: 1.5px solid var(--color-charcoal);
-      border-radius: var(--radius-tags);
-      padding: 8px 20px;
+      font-size: 13px;
+      color: var(--ink-soft);
+      background: var(--bg-soft);
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      padding: 3px 12px;
+      line-height: 1.7;
+      transition: border-color .15s, color .15s;
     }
-    .tag.green { border-color: var(--color-sprout-sticker); }
+    .tag:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
 
-    /* ===== 项目 ===== */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: var(--element-gap);
+    /* 联系卡片 */
+    .contact-box {
+      background: var(--bg-soft);
+      border: 1px solid var(--rule);
+      border-radius: 6px;
+      padding: 24px;
     }
-    .project-card {
-      background: var(--color-cream-paper);
-      border: 1.5px solid var(--color-charcoal);
-      border-radius: var(--radius-cards);
-      padding: var(--card-padding);
-      box-shadow: var(--shadow-lg);
-      display: flex;
-      flex-direction: column;
+    .contact-box p {
+      margin: 0 0 18px;
+      color: var(--ink-soft);
+      font-size: 15px;
     }
-    .project-card .tag { align-self: flex-start; margin-bottom: 16px; font-size: 14px; }
-    .project-card h3 {
-      font-family: var(--font-gelica);
-      font-weight: 700;
-      font-size: var(--text-heading-sm);
-      color: var(--color-charcoal);
-      margin-bottom: 8px;
-    }
-    .project-card p {
-      font-family: var(--font-geist);
-      font-size: var(--text-body-sm);
-      line-height: var(--leading-body-sm);
-      color: var(--color-charcoal);
-      flex: 1;
-      margin-bottom: 20px;
-    }
-    .project-card .link {
-      font-family: var(--font-gelica);
-      font-weight: 600;
-      font-size: 16px;
-      color: var(--color-burnt-sienna);
-      text-decoration: none;
-    }
-    .project-card .link:hover { text-decoration: underline; }
-
-    /* ===== 联系 ===== */
-    .contact-block {
-      max-width: 640px;
-    }
-    .contact-block h2 {
-      font-family: var(--font-gelica);
-      font-weight: 800;
-      font-size: clamp(36px, 5vw, 46px);
-      line-height: 1.2;
-      color: var(--color-cocoa-ink);
-      margin-bottom: 16px;
-    }
-    .contact-block p {
-      font-family: var(--font-geist);
-      font-size: var(--text-body);
-      color: var(--color-charcoal);
-      margin-bottom: 28px;
-    }
-    .contact-block .cta-row {
+    .contact-actions {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
-      align-items: center;
+      gap: 10px;
     }
-    .contact-block .quiet {
-      font-family: var(--font-gelica);
-      font-size: 16px;
-      color: var(--color-cocoa-ink);
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 16px;
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      font-size: 14px;
+      color: var(--ink-soft);
+      text-decoration: none;
+      transition: all .15s;
+      background: var(--bg);
+    }
+    .btn:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+      background: rgba(139, 92, 246, 0.08);
+      text-decoration: none;
+    }
+    .contact-note {
+      margin: 16px 0 0 !important;
+      font-size: 13px;
+      color: var(--ink-mute);
     }
 
-    /* ===== 页脚品牌带 ===== */
-    footer {
-      margin-top: 48px;
-      background: var(--color-marker-orange);
-      border-radius: 56px 56px 0 0;
-      padding: 48px 24px 40px;
+    /* ===== 侧边栏 ===== */
+    .sidebar { font-size: 14px; }
+    .sidebar .widget { margin-bottom: 36px; }
+    .sidebar .widget h3 {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--ink);
+      margin: 0 0 12px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent);
+      letter-spacing: 0.02em;
+    }
+    .sidebar ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .sidebar li {
+      padding: 6px 0;
+      border-bottom: 1px dashed var(--rule);
+      line-height: 1.55;
+    }
+    .sidebar li:last-child { border-bottom: none; }
+    .sidebar a { color: var(--ink-soft); text-decoration: none; }
+    .sidebar a:hover { color: var(--accent); }
+    .sidebar .count {
+      color: var(--ink-faint);
+      font-size: 12px;
+      margin-left: 6px;
+    }
+
+    .sidebar .about-box {
+      background: var(--bg-soft);
+      border: 1px solid var(--rule);
+      padding: 16px;
+      border-radius: 4px;
+      font-size: 13px;
+      color: var(--ink-soft);
+      line-height: 1.75;
       text-align: center;
-      color: var(--color-charcoal);
     }
-    footer .brand-line {
-      font-family: var(--font-gelica);
-      font-weight: 800;
-      font-size: 28px;
-      margin-bottom: 8px;
+    .sidebar .about-avatar {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      margin: 4px auto 14px;
+      border: 3px solid var(--bg);
+      box-shadow: 0 0 0 1px var(--rule);
     }
-    footer p {
-      font-family: var(--font-geist);
-      font-size: 16px;
+    .sidebar .about-box p {
+      margin: 0 0 10px;
+      text-align: left;
     }
-    footer .foot-stickers {
+    .sidebar .about-box p:last-child { margin-bottom: 0; }
+    .sidebar .about-box strong { color: var(--ink); }
+
+    /* ===== 页脚 ===== */
+    footer {
+      border-top: 1px solid var(--rule);
+      margin-top: 48px;
+      padding: 40px 0 56px;
+    }
+    .footer-nav {
       display: flex;
-      justify-content: center;
-      gap: 16px;
-      margin-bottom: 20px;
+      flex-wrap: wrap;
+      gap: 18px;
+      margin-bottom: 18px;
+      font-size: 14px;
     }
-    footer .foot-stickers .sticker { position: static; flex-shrink: 0; }
+    .footer-nav a { color: var(--ink-soft); text-decoration: none; }
+    .footer-nav a:hover { color: var(--accent); }
+    .footer-copy {
+      font-size: 13px;
+      color: var(--ink-mute);
+    }
+    .footer-copy .brand-line {
+      color: var(--ink);
+      font-weight: 600;
+    }
 
     /* ===== 响应式 ===== */
-    @media (max-width: 860px) {
-      .hero { grid-template-columns: 1fr; }
-      .hero-right { order: -1; }
-      .nav-links { gap: 16px; }
-      .nav-links a { font-size: 16px; }
-      .sticker.st5 { display: none; }
+    @media (max-width: 840px) {
+      .hero h1 { font-size: 32px; }
+      .home-cards { grid-template-columns: 1fr; gap: 12px; margin: 28px 0 8px; }
+      .home-card { padding: 16px 18px; }
+      .home-card .hc-num { font-size: 26px; }
+      .cols { grid-template-columns: 1fr; gap: 40px; padding: 40px 0 48px; }
     }
     @media (max-width: 560px) {
-      .nav-links { display: none; }
-      .hero { padding-top: 48px; }
+      .topnav .row { gap: 14px; }
+      .topnav nav { gap: 14px; overflow-x: auto; }
+      .hero { padding-top: 40px; }
+      .entry-title { font-size: 18px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- 导航 -->
-  <nav>
-    <div class="nav-inner">
-      <a href="#home" class="brand-mark" aria-label="回到首页">✎</a>
-      <ul class="nav-links">
-        <li><a href="#about">关于</a></li>
-        <li><a href="#skills">技能</a></li>
-        <li><a href="#projects">项目</a></li>
-        <li><a href="#contact">联系</a></li>
-      </ul>
-      <a href="#contact" class="btn">联系我 <span class="arrow">→</span></a>
-    </div>
-  </nav>
-
-  <!-- 主视觉 -->
-  <header id="home" class="hero">
-    <div class="hero-left">
-      <span class="hand-caption">hi there, welcome ~</span>
-      <h1>你好，我是<br>你的名字</h1>
-      <p class="hero-sub">
-        热爱创造与分享的<span class="marker">全栈开发者</span>，
-        专注于构建简洁、优雅且实用的产品。
-      </p>
-      <div class="hero-cta">
-        <a href="#projects" class="btn">查看我的作品 <span class="arrow">→</span></a>
-        <span class="quiet">正在持续更新中 · 欢迎围观</span>
+  <!-- 顶部导航 -->
+  <header class="topnav">
+    <div class="wrap row">
+      <div class="brand">
+        <a href="#home">于铃</a>
+        <span class="tagline">AI 产品经理 · 探索 AI 前沿</span>
       </div>
-    </div>
-    <div class="hero-right">
-      <div class="name-label">
-        <div class="label-head"><span>name label</span><span>✦</span></div>
-        <div class="field">
-          <div class="k">Name / 姓名</div>
-          <div class="v">你的名字</div>
-        </div>
-        <div class="field">
-          <div class="k">Class / 角色</div>
-          <div class="v">全栈开发者</div>
-        </div>
-        <div class="field">
-          <div class="k">Roll no. / 编号</div>
-          <div class="v">No. 001</div>
-        </div>
-      </div>
-      <span class="sticker st1">⚡</span>
-      <span class="sticker st2">🐻</span>
-      <span class="sticker st3">💛</span>
-      <span class="sticker st4">👻</span>
-      <span class="sticker st5">✨</span>
+      <nav>
+        <a href="#home" class="active">首页</a>
+        <a href="#about">关于</a>
+        <a href="#skills">技能</a>
+        <a href="#projects">项目</a>
+        <a href="#contact">联系</a>
+        <a href="https://github.com/yuling170916" target="_blank" rel="noopener" class="nav-ext">GitHub ↗</a>
+      </nav>
     </div>
   </header>
 
-  <!-- 贴纸分隔带 -->
-  <div class="sticker-divider">
-    <span class="sticker">⚡</span>
-    <span class="sticker">🐻</span>
-    <span class="sticker">💛</span>
-    <span class="sticker">👻</span>
-    <span class="sticker">🐱</span>
-    <span class="sticker">✨</span>
-  </div>
+  <main class="wrap">
 
-  <!-- 关于我 -->
-  <section id="about">
-    <div class="container">
-      <div class="section-header">
-        <span class="hand-caption">about me ~</span>
-        <h2>关于我</h2>
+    <!-- 主视觉 -->
+    <section class="hero" id="home">
+      <h1>你好，我是于铃</h1>
+      <p class="hero-sub">十年从交互到<span class="hl">AI 产品经理</span>，我始终探索 AI 前沿。不仅关注模型“能不能做到”，更看重其能否融入真实业务，被用户稳定使用，并产出可验证的交付结果。欢迎在 GitHub、小红书、公众号、人人都是产品经理等平台关注我哦。</p>
+    </section>
+
+    <!-- 目录卡片 -->
+    <section class="home-cards">
+      <a href="#about" class="home-card">
+        <span class="hc-num">3</span>
+        <span class="hc-meta">
+          <h3>关于我</h3>
+          <p>三个关键词，认识我</p>
+        </span>
+        <span class="hc-arrow">→</span>
+      </a>
+      <a href="#skills" class="home-card">
+        <span class="hc-num">5</span>
+        <span class="hc-meta">
+          <h3>我的技能</h3>
+          <p>AI · 数据 · 产品 · 商业 · 协作</p>
+        </span>
+        <span class="hc-arrow">→</span>
+      </a>
+      <a href="#projects" class="home-card">
+        <span class="hc-num">3</span>
+        <span class="hc-meta">
+          <h3>我的作品</h3>
+          <p>精选项目，持续更新</p>
+        </span>
+        <span class="hc-arrow">→</span>
+      </a>
+    </section>
+
+    <!-- 双栏 -->
+    <div class="cols">
+
+      <!-- 主栏 -->
+      <div class="feed">
+
+        <!-- 关于我 -->
+        <section id="about">
+          <div class="feed-head">
+            <h2>关于我</h2>
+          </div>
+          <article class="entry">
+            <div class="entry-head">
+              <h3 class="entry-title"><span class="emoji">🌟</span>我是谁</h3>
+            </div>
+            <p class="entry-text">我是一位致力于将 AI 前沿技术转化为真实业务价值、确保产品可落地且可验证的 AI 产品经理。</p>
+          </article>
+          <article class="entry">
+            <div class="entry-head">
+              <h3 class="entry-title"><span class="emoji">💡</span>我的理念</h3>
+            </div>
+            <p class="entry-text">简洁胜过复杂，实用高于花哨。好的产品应该让用户感到自然、顺手，而不是被功能淹没。</p>
+          </article>
+          <article class="entry">
+            <div class="entry-head">
+              <h3 class="entry-title"><span class="emoji">🚀</span>我的目标</h3>
+            </div>
+            <p class="entry-text">持续学习新技术，做出真正对他人有价值的作品，并与更多志同道合的人一起成长。</p>
+          </article>
+        </section>
+
+        <!-- 技能 -->
+        <section id="skills">
+          <div class="feed-head">
+            <h2>我的技能</h2>
+          </div>
+
+          <div class="skill-group">
+            <div class="tags">
+              <span class="tag">AI 技术理解力</span>
+              <span class="tag">数据思维与评估体系</span>
+              <span class="tag">产品设计与交互能力</span>
+              <span class="tag">商业洞察与市场分析</span>
+              <span class="tag">跨部门协作与项目管理</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- 项目 -->
+        <section id="projects">
+          <div class="feed-head">
+            <h2>我的作品</h2>
+            <a href="#projects" class="feed-more">全部项目 →</a>
+          </div>
+          <article class="project-entry">
+            <a class="project-cover cover-code" href="https://github.com/yuling170916" target="_blank" rel="noopener" aria-label="我的 GitHub">
+              <span class="code-bar"><i></i><i></i><i></i></span>
+              <span class="code-body">
+                <span class="code-line"><span class="c-num">1</span><span class="c-kw">const</span> <span class="c-var">yuling</span> = {</span>
+                <span class="code-line"><span class="c-num">2</span>  role: <span class="c-str">'AI 产品经理'</span>,</span>
+                <span class="code-line"><span class="c-num">3</span>  github: <span class="c-str">'yuling170916'</span>,</span>
+                <span class="code-line"><span class="c-num">4</span>};</span>
+              </span>
+            </a>
+            <div class="project-body">
+              <div class="entry-head">
+                <h3 class="entry-title">我的 GitHub</h3>
+                <span class="entry-cat">开源主页</span>
+              </div>
+              <p class="entry-text">我的 GitHub 主页，沉淀代码、开源项目与技术笔记，欢迎交流。</p>
+              <a href="https://github.com/yuling170916" target="_blank" rel="noopener" class="entry-more">了解更多 →</a>
+            </div>
+          </article>
+          <article class="project-entry">
+            <a class="project-cover" href="https://www.woshipm.com/ai/6443627.html" target="_blank" rel="noopener" aria-label="人人都是产品经理文章">
+              <img src="https://image.woshipm.com/2024/10/31/53017c62-972b-11ef-b0a5-00163e142b65.jpg" alt="文章封面" loading="lazy">
+            </a>
+            <div class="project-body">
+              <div class="entry-head">
+                <h3 class="entry-title">大厂 AI 办公入口大战：争的不是功能，而是你的“开工第一分钟”</h3>
+                <span class="entry-cat">人人都是产品经理 · AI</span>
+              </div>
+              <p class="entry-text">在人人都是产品经理发布的产品分析文章，聊聊大厂 AI 办公入口之争。</p>
+              <a href="https://www.woshipm.com/ai/6443627.html" target="_blank" rel="noopener" class="entry-more">了解更多 →</a>
+            </div>
+          </article>
+          <article class="project-entry">
+            <a class="project-cover" href="https://www.xiaohongshu.com/explore/6a819ad6000000000503022e" target="_blank" rel="noopener" aria-label="小红书文章">
+              <img src="https://sns-webpic-qc.xhscdn.com/202608172041/30fb2ee7572a6e83015f7a0749cb1f36/spectrum/1040g0k0323u8bosb72005q4b177q6nv0uem25cg!nc_n_webp_mw_1" alt="笔记封面" loading="lazy">
+            </a>
+            <div class="project-body">
+              <div class="entry-head">
+                <h3 class="entry-title">Loss和梯度下降，模型到底怎么“改错”？</h3>
+                <span class="entry-cat">小红书 · AI 科普</span>
+              </div>
+              <p class="entry-text">在小红书发布的 AI 科普笔记，用通俗语言讲清模型训练的核心概念。</p>
+              <a href="https://www.xiaohongshu.com/explore/6a819ad6000000000503022e" target="_blank" rel="noopener" class="entry-more">了解更多 →</a>
+            </div>
+          </article>
+        </section>
+
+        <!-- 联系 -->
+        <section id="contact">
+          <div class="feed-head">
+            <h2>联系我</h2>
+          </div>
+          <div class="contact-box">
+            <p>如果你有合作意向，或者只是想打个招呼，欢迎随时联系我。</p>
+            <div class="contact-actions">
+              <a href="mailto:yulingmvp@foxmail.com" class="btn">📧 给我发邮件</a>
+              <a href="https://github.com/yuling170916" target="_blank" rel="noopener" class="btn">GitHub →</a>
+              <a href="https://www.xiaohongshu.com/user/profile/688b09cf0000000028035fe0" target="_blank" rel="noopener" class="btn">小红书 →</a>
+              <a href="https://www.woshipm.com/u/335469" target="_blank" rel="noopener" class="btn">人人都是产品经理 →</a>
+            </div>
+            <p class="contact-note">通常 24 小时内回复</p>
+          </div>
+        </section>
+
       </div>
-      <div class="about-grid">
-        <div class="about-card">
-          <span class="emoji">🌟</span>
-          <h3>我是谁</h3>
-          <p>一名热爱技术的开发者，喜欢把想法变成现实。无论是网页、应用还是工具，我都享受从零到一创造的过程。</p>
+
+      <!-- 侧边栏 -->
+      <aside class="sidebar">
+
+        <div class="widget">
+          <div class="about-box">
+            <img class="about-avatar" src="https://avatars.githubusercontent.com/u/76091079?v=4" alt="于铃的头像">
+            <p><strong>于铃</strong>，十年从交互到 AI 产品经理，始终探索 AI 前沿。</p>
+            <p>关注 AI 能否融入真实业务，被用户稳定使用，并产出可验证的交付结果。</p>
+          </div>
         </div>
-        <div class="about-card">
-          <span class="emoji">💡</span>
-          <h3>我的理念</h3>
-          <p>简洁胜过复杂，实用高于花哨。好的产品应该让用户感到自然、顺手，而不是被功能淹没。</p>
+
+        <div class="widget">
+          <h3>联系</h3>
+          <ul>
+            <li><a href="mailto:yulingmvp@foxmail.com">📧 邮箱</a></li>
+            <li><a href="https://github.com/yuling170916" target="_blank" rel="noopener">GitHub</a></li>
+          </ul>
         </div>
-        <div class="about-card">
-          <span class="emoji">🚀</span>
-          <h3>我的目标</h3>
-          <p>持续学习新技术，做出真正对他人有价值的作品，并与更多志同道合的人一起成长。</p>
+
+        <div class="widget">
+          <h3>技能分类</h3>
+          <ul>
+            <li><a href="#skills">AI 技术理解力</a></li>
+            <li><a href="#skills">数据思维与评估体系</a></li>
+            <li><a href="#skills">产品设计与交互能力</a></li>
+            <li><a href="#skills">商业洞察与市场分析</a></li>
+            <li><a href="#skills">跨部门协作与项目管理</a></li>
+          </ul>
         </div>
-      </div>
+
+        <div class="widget">
+          <h3>外站</h3>
+          <ul>
+            <li><a href="https://www.woshipm.com/u/335469" target="_blank" rel="noopener">人人都是产品经理</a></li>
+            <li><a href="https://www.xiaohongshu.com/user/profile/688b09cf0000000028035fe0" target="_blank" rel="noopener">小红书</a></li>
+            <li><a href="https://github.com/yuling170916" target="_blank" rel="noopener">GitHub</a></li>
+          </ul>
+        </div>
+
+      </aside>
+
     </div>
-  </section>
+  </main>
 
-  <!-- 技能 -->
-  <section id="skills">
-    <div class="container">
-      <div class="section-header">
-        <span class="hand-caption">my toolbox ~</span>
-        <h2>我的技能</h2>
-      </div>
-
-      <div class="skill-group">
-        <span class="group-label">前端开发 ↳</span>
-        <div class="tags">
-          <span class="tag">HTML</span>
-          <span class="tag">CSS</span>
-          <span class="tag">JavaScript</span>
-          <span class="tag">TypeScript</span>
-          <span class="tag">React</span>
-        </div>
-      </div>
-
-      <div class="skill-group">
-        <span class="group-label">后端开发 ↳</span>
-        <div class="tags">
-          <span class="tag green">Python</span>
-          <span class="tag green">Node.js</span>
-          <span class="tag green">数据库</span>
-        </div>
-      </div>
-
-      <div class="skill-group">
-        <span class="group-label">设计与工具 ↳</span>
-        <div class="tags">
-          <span class="tag">UI 设计</span>
-          <span class="tag">交互设计</span>
-          <span class="tag green">Git</span>
-          <span class="tag green">DevOps</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 项目 -->
-  <section id="projects">
-    <div class="container">
-      <div class="section-header">
-        <span class="hand-caption">my works ~</span>
-        <h2>我的作品</h2>
-      </div>
-      <div class="projects-grid">
-        <div class="project-card">
-          <span class="tag">Web 应用</span>
-          <h3>项目一</h3>
-          <p>一个帮助用户高效管理日常任务的应用，界面简洁、操作流畅。</p>
-          <a href="#" class="link">了解更多 →</a>
-        </div>
-        <div class="project-card">
-          <span class="tag green">开源工具</span>
-          <h3>项目二</h3>
-          <p>一款命令行工具，让开发者的重复性工作自动化，节省大量时间。</p>
-          <a href="#" class="link">了解更多 →</a>
-        </div>
-        <div class="project-card">
-          <span class="tag">个人网站</span>
-          <h3>项目三</h3>
-          <p>你正在浏览的这个主页，纯 HTML/CSS 构建，遵循现代设计规范。</p>
-          <a href="#" class="link">了解更多 →</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 联系 -->
-  <section id="contact">
-    <div class="container">
-      <div class="contact-block">
-        <span class="hand-caption" style="margin-bottom:12px;">say hi ~</span>
-        <h2>一起做点有意思的事</h2>
-        <p>如果你有合作意向，或者只是想打个招呼，欢迎随时联系我。</p>
-        <div class="cta-row">
-          <a href="mailto:your-email@example.com" class="btn">📧 给我发邮件</a>
-          <a href="https://github.com/" target="_blank" class="btn">GitHub <span class="arrow">→</span></a>
-          <span class="quiet">通常 24 小时内回复</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 页脚品牌带 -->
+  <!-- 页脚 -->
   <footer>
-    <div class="foot-stickers">
-      <span class="sticker">⚡</span>
-      <span class="sticker">💛</span>
-      <span class="sticker">✨</span>
+    <div class="wrap">
+      <nav class="footer-nav">
+        <a href="#about">关于</a>
+        <a href="#skills">技能</a>
+        <a href="#projects">项目</a>
+        <a href="#contact">联系</a>
+        <a href="https://github.com/yuling170916" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.xiaohongshu.com/user/profile/688b09cf0000000028035fe0" target="_blank" rel="noopener">小红书</a>
+        <a href="https://www.woshipm.com/u/335469" target="_blank" rel="noopener">人人都是产品经理</a>
+      </nav>
+      <p class="footer-copy"><span class="brand-line">于铃 · AI 产品经理</span>　© 2026 于铃 的个人主页 · 用 ❤️ 打造</p>
     </div>
-    <div class="brand-line">that's all, thanks ~</div>
-    <p>© 2025 我的个人主页 · 用 ❤️ 打造</p>
   </footer>
 
 </body>
