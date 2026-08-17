@@ -127,18 +127,31 @@
     .hero {
       padding: 56px 0 8px;
     }
+    .hero-layout {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+    .hero-avatar {
+      width: 128px;
+      height: 128px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+      border: 3px solid var(--bg);
+      box-shadow: 0 0 0 1px var(--rule), 0 12px 28px rgba(0,0,0,.08);
+    }
     .hero h1 {
       font-size: 40px;
       font-weight: 700;
-      margin: 0 0 14px;
+      margin: 0 0 12px;
       letter-spacing: -0.01em;
-      line-height: 1.25;
+      line-height: 1.2;
     }
     .hero .hero-sub {
-      font-size: 16px;
+      font-size: 17px;
       color: var(--ink-soft);
       margin: 0;
-      max-width: 560px;
     }
     .hero .hl {
       color: var(--accent);
@@ -282,6 +295,27 @@
       text-decoration: none;
     }
     .entry-more:hover { text-decoration: underline; }
+
+    /* 关于我列表 */
+    .about-lead {
+      font-size: 15px;
+      line-height: 1.85;
+      color: var(--ink-soft);
+      margin: 0;
+    }
+    .about-lead strong { color: var(--ink); }
+    .about-list {
+      list-style: none;
+      margin: 20px 0 0;
+      padding: 0;
+    }
+    .about-list li {
+      padding: 7px 0;
+      line-height: 1.7;
+      color: var(--ink-soft);
+      font-size: 15px;
+    }
+    .about-list li strong { color: var(--ink); font-weight: 600; }
 
     /* 项目卡片（带封面图） */
     .project-entry {
@@ -539,6 +573,8 @@
       .topnav .row { gap: 14px; }
       .topnav nav { gap: 14px; overflow-x: auto; }
       .hero { padding-top: 40px; }
+      .hero-layout { flex-direction: column; align-items: flex-start; gap: 20px; }
+      .hero-avatar { width: 96px; height: 96px; }
       .entry-title { font-size: 18px; }
     }
   </style>
@@ -567,17 +603,22 @@
 
     <!-- 主视觉 -->
     <section class="hero" id="home">
-      <h1>你好，我是于铃</h1>
-      <p class="hero-sub">十年从交互到<span class="hl">AI 产品经理</span>，我始终探索 AI 前沿。不仅关注模型“能不能做到”，更看重其能否融入真实业务，被用户稳定使用，并产出可验证的交付结果。欢迎在 GitHub、小红书、公众号、人人都是产品经理等平台关注我哦。</p>
+      <div class="hero-layout">
+        <img class="hero-avatar" src="https://avatars.githubusercontent.com/u/76091079?v=4" alt="于铃的头像">
+        <div class="hero-intro">
+          <h1>你好，我是于铃</h1>
+          <p class="hero-sub">一名关注真实用户价值与 <span class="hl">AI 落地</span> 的产品经理</p>
+        </div>
+      </div>
     </section>
 
     <!-- 目录卡片 -->
     <section class="home-cards">
       <a href="#about" class="home-card">
-        <span class="hc-num">3</span>
+        <span class="hc-num">4</span>
         <span class="hc-meta">
           <h3>关于我</h3>
-          <p>三个关键词，认识我</p>
+          <p>方向 · 擅长 · 关注 · 交流</p>
         </span>
         <span class="hc-arrow">→</span>
       </a>
@@ -608,26 +649,15 @@
         <!-- 关于我 -->
         <section id="about">
           <div class="feed-head">
-            <h2>关于我</h2>
+            <h2>🌷 About Me</h2>
           </div>
-          <article class="entry">
-            <div class="entry-head">
-              <h3 class="entry-title"><span class="emoji">🌟</span>我是谁</h3>
-            </div>
-            <p class="entry-text">我是一位致力于将 AI 前沿技术转化为真实业务价值、确保产品可落地且可验证的 AI 产品经理。</p>
-          </article>
-          <article class="entry">
-            <div class="entry-head">
-              <h3 class="entry-title"><span class="emoji">💡</span>我的理念</h3>
-            </div>
-            <p class="entry-text">简洁胜过复杂，实用高于花哨。好的产品应该让用户感到自然、顺手，而不是被功能淹没。</p>
-          </article>
-          <article class="entry">
-            <div class="entry-head">
-              <h3 class="entry-title"><span class="emoji">🚀</span>我的目标</h3>
-            </div>
-            <p class="entry-text">持续学习新技术，做出真正对他人有价值的作品，并与更多志同道合的人一起成长。</p>
-          </article>
+          <p class="about-lead">我喜欢站在 <strong>用户需求、商业目标与模型能力</strong> 的交叉点，把模糊的问题变成清晰的产品路径。对我来说，一款好的 AI 产品不只是“模型能做到”，还要让用户愿意用、持续用，并且能被数据验证。</p>
+          <ul class="about-list">
+            <li>🎯 <strong>产品方向：</strong>AI Native Product、Agent、Copilot、知识库与智能工作流</li>
+            <li>🔍 <strong>擅长的事：</strong>用户洞察、需求分析、产品策略、原型设计、指标体系与跨团队推进</li>
+            <li>🧠 <strong>关注的问题：</strong>如何让 AI 更可信、更可控，也更有温度</li>
+            <li>💬 <strong>欢迎交流：</strong>AI 产品、女性科技从业者、独立产品与职业成长</li>
+          </ul>
         </section>
 
         <!-- 技能 -->
@@ -724,8 +754,7 @@
 
         <div class="widget">
           <div class="about-box">
-            <img class="about-avatar" src="https://avatars.githubusercontent.com/u/76091079?v=4" alt="于铃的头像">
-            <p><strong>于铃</strong>，十年从交互到 AI 产品经理，始终探索 AI 前沿。</p>
+            <p><strong>于铃</strong>，一名关注真实用户价值与 AI 落地的产品经理。</p>
             <p>关注 AI 能否融入真实业务，被用户稳定使用，并产出可验证的交付结果。</p>
           </div>
         </div>
