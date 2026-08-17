@@ -130,6 +130,7 @@
     .hero-layout {
       display: flex;
       align-items: center;
+      justify-content: space-between;
       gap: 32px;
     }
     .hero-avatar {
@@ -645,7 +646,7 @@
       .topnav nav { gap: 14px; overflow-x: auto; }
       .hero { padding-top: 40px; }
       .hero-layout { flex-direction: column; align-items: flex-start; gap: 20px; }
-      .hero-avatar { width: 96px; height: 96px; }
+      .hero-avatar { width: 96px; height: 96px; order: -1; }
       .entry-title { font-size: 18px; }
     }
   </style>
@@ -676,11 +677,11 @@
     <!-- 主视觉 -->
     <section class="hero" id="home">
       <div class="hero-layout">
-        <img class="hero-avatar" src="avatar.jpg" alt="于铃的头像">
         <div class="hero-intro">
           <h1>你好，我是于铃</h1>
           <p class="hero-sub">一名关注真实用户价值与 <span class="hl">AI 落地</span> 的产品经理</p>
         </div>
+        <img class="hero-avatar" src="avatar.jpg" alt="于铃的头像">
       </div>
     </section>
 
@@ -704,35 +705,11 @@
           </span>
           <span class="hc-arrow">→</span>
         </a>
-        <a href="#writing" class="home-card">
-          <span class="hc-num">5</span>
-          <span class="hc-meta">
-            <h3>Research & Writing</h3>
-            <p>研究 · 写作 · 复盘</p>
-          </span>
-          <span class="hc-arrow">→</span>
-        </a>
         <a href="#projects" class="home-card">
           <span class="hc-num">3</span>
           <span class="hc-meta">
             <h3>我的作品</h3>
             <p>精选项目，持续更新</p>
-          </span>
-          <span class="hc-arrow">→</span>
-        </a>
-        <a href="#contact" class="home-card">
-          <span class="hc-num">5</span>
-          <span class="hc-meta">
-            <h3>联系我</h3>
-            <p>邮箱 · 微信 · 社交平台</p>
-          </span>
-          <span class="hc-arrow">→</span>
-        </a>
-        <a href="https://yuling170916.github.io/" class="home-card" target="_blank" rel="noopener">
-          <span class="hc-num">🌐</span>
-          <span class="hc-meta">
-            <h3>个人主站</h3>
-            <p>访问在线主页</p>
           </span>
           <span class="hc-arrow">→</span>
         </a>
