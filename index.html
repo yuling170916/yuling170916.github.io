@@ -158,13 +158,23 @@
       font-weight: 600;
     }
 
-    /* ===== 目录卡片（三张） ===== */
+    /* ===== 目录 ===== */
+    .toc { margin: 36px 0 0; }
+    .toc-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--ink-mute);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin: 0 0 16px;
+    }
     .home-cards {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 16px;
       margin: 36px 0 12px;
     }
+    .toc .home-cards { margin: 0 0 12px; }
     .home-card {
       position: relative;
       display: grid;
@@ -674,32 +684,51 @@
       </div>
     </section>
 
-    <!-- 目录卡片 -->
-    <section class="home-cards">
-      <a href="#about" class="home-card">
-        <span class="hc-num">4</span>
-        <span class="hc-meta">
-          <h3>关于我</h3>
-          <p>方向 · 擅长 · 关注 · 交流</p>
-        </span>
-        <span class="hc-arrow">→</span>
-      </a>
-      <a href="#skills" class="home-card">
-        <span class="hc-num">5</span>
-        <span class="hc-meta">
-          <h3>Working On</h3>
-          <p>Agent · RAG · 企业 AI</p>
-        </span>
-        <span class="hc-arrow">→</span>
-      </a>
-      <a href="#projects" class="home-card">
-        <span class="hc-num">3</span>
-        <span class="hc-meta">
-          <h3>我的作品</h3>
-          <p>精选项目，持续更新</p>
-        </span>
-        <span class="hc-arrow">→</span>
-      </a>
+    <!-- 目录 -->
+    <section class="toc" id="toc">
+      <h2 class="toc-title">目录 · Contents</h2>
+      <div class="home-cards">
+        <a href="#about" class="home-card">
+          <span class="hc-num">4</span>
+          <span class="hc-meta">
+            <h3>关于我</h3>
+            <p>方向 · 擅长 · 关注 · 交流</p>
+          </span>
+          <span class="hc-arrow">→</span>
+        </a>
+        <a href="#skills" class="home-card">
+          <span class="hc-num">5</span>
+          <span class="hc-meta">
+            <h3>Working On</h3>
+            <p>Agent · RAG · 企业 AI</p>
+          </span>
+          <span class="hc-arrow">→</span>
+        </a>
+        <a href="#writing" class="home-card">
+          <span class="hc-num">5</span>
+          <span class="hc-meta">
+            <h3>Research & Writing</h3>
+            <p>研究 · 写作 · 复盘</p>
+          </span>
+          <span class="hc-arrow">→</span>
+        </a>
+        <a href="#projects" class="home-card">
+          <span class="hc-num">3</span>
+          <span class="hc-meta">
+            <h3>我的作品</h3>
+            <p>精选项目，持续更新</p>
+          </span>
+          <span class="hc-arrow">→</span>
+        </a>
+        <a href="#contact" class="home-card">
+          <span class="hc-num">5</span>
+          <span class="hc-meta">
+            <h3>联系我</h3>
+            <p>邮箱 · 微信 · 社交平台</p>
+          </span>
+          <span class="hc-arrow">→</span>
+        </a>
+      </div>
     </section>
 
     <!-- 双栏 -->
