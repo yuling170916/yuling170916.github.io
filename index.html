@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我的个人主页</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    /* ===== Superr 设计令牌 ===== */
+    :root {
+      /* 颜色 */
+      --color-cream-paper: #fdfbf9;   /* 画布 / 卡片 / 按钮填充 —— 暖白纸 */
+      --color-charcoal: #171717;      /* 墨色 —— 边框、分隔、结构线 */
+      --color-cocoa-ink: #2b1a07;     /* 可可墨 —— 标题、装饰边框 */
+      --color-true-black: #000000;
+      --color-dew-drop: #f7efe9;      /* 露滴 —— 次级表面色调 */
+      --color-marker-orange: #ff6f1e; /* 马克笔橙 —— 手写批注 / 强调 / 页脚带 */
+      --color-burnt-sienna: #ce500a;  /* 焦赭 —— 更深的橙，正文/边框 */
+      --color-sky-sticker: #3b82f6;   /* 仅装饰 */
+      --color-bubblegum-sticker: #ff66cf; /* 仅装饰 */
+      --color-sprout-sticker: #22c55e;/* 绿色描边 —— 标签 / 分隔 / 聚焦边缘 */
+      --color-shadow-mist: #bebcbb;
+
+      /* 字体 */
+      --font-gelica: 'Nunito', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-geist: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+      /* 字阶 */
+      --text-caption: 16px;  --leading-caption: 1.5;
+      --text-body-sm: 18px;  --leading-body-sm: 1.5;
+      --text-body: 20px;     --leading-body: 1.5;
+      --text-subheading: 24px; --leading-subheading: 1.4;
+      --text-heading-sm: 28px; --leading-heading-sm: 1.4;
+      --text-heading: 36px;  --leading-heading: 1.2;
+      --text-heading-lg: 46px; --leading-heading-lg: 1.2;
+      --text-display: 104px; --leading-display: 1.08;
+
+      /* 间距 */
+      --spacing-4: 4px; --spacing-8: 8px; --spacing-12: 12px;
+      --spacing-16: 16px; --spacing-20: 20px; --spacing-24: 24px;
+      --spacing-28: 28px; --spacing-32: 32px; --spacing-40: 40px;
+      --spacing-48: 48px; --spacing-64: 64px; --spacing-116: 116px;
+
+      /* 布局 */
+      --page-max-width: 1200px;
+      --section-gap: 64px;
+      --card-padding: 32px;
+      --element-gap: 12px;
+
+      /* 圆角 */
+      --radius-tags: 20px;
+      --radius-cards: 12px;
+      --radius-footer: 56px;
+      --radius-inputs: 8px;
+      --radius-buttons: 20px;
+
+      /* 阴影（耳语般轻盈） */
+      --shadow-lg: rgba(0,0,0,0.06) 0px 2px 20px 0px;
+      --shadow-subtle: rgba(0,0,0,0.25) 0px 1px 2px 0px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-geist);
+      background: var(--color-cream-paper);
+      color: var(--color-charcoal);
+      font-size: var(--text-body);
+      line-height: var(--leading-body);
+      letter-spacing: normal;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; }
+
+    /* ===== 顶部导航 ===== */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(253, 251, 249, 0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1.5px solid var(--color-charcoal);
+    }
+    .nav-inner {
+      max-width: var(--page-max-width);
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+    .brand-mark {
+      font-size: 26px;
+      line-height: 1;
+      color: var(--color-charcoal);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+    }
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+      flex: 1;
+    }
+    .nav-links a {
+      font-family: var(--font-geist);
+      font-weight: 500;
+      font-size: 18px;
+      color: var(--color-charcoal);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    .nav-links a:hover { color: var(--color-marker-orange); }
+
+    /* 药丸描边按钮（非填充） */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      font-family: var(--font-gelica);
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 1;
+      color: var(--color-charcoal);
+      background: var(--color-cream-paper);
+      border: 1.5px solid var(--color-charcoal);
+      border-radius: var(--radius-buttons);
+      padding: 11px 28px;
+      box-shadow: var(--shadow-subtle);
+      transition: transform 0.15s ease, background 0.15s ease;
+      white-space: nowrap;
+    }
+    .btn:hover { transform: translateY(-2px); background: var(--color-dew-drop); }
+    .btn .arrow { transition: transform 0.15s ease; }
+    .btn:hover .arrow { transform: translateX(3px); }
+
+    /* ===== 主视觉（两栏不对称） ===== */
+    .hero {
+      max-width: var(--page-max-width);
+      margin: 0 auto;
+      padding: 80px 24px 64px;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 48px;
+      align-items: center;
+    }
+    .hero-left { position: relative; }
+
+    /* 手写批注 */
+    .hand-caption {
+      display: inline-block;
+      font-family: var(--font-gelica);
+      font-weight: 400;
+      font-size: 22px;
+      color: var(--color-marker-orange);
+      transform: rotate(-4deg);
+      margin-bottom: 24px;
+    }
+
+    .hero h1 {
+      font-family: var(--font-gelica);
+      font-weight: 800;
+      font-size: clamp(52px, 8vw, 96px);
+      line-height: 1.08;
+      letter-spacing: normal;
+      color: var(--color-cocoa-ink);
+      margin-bottom: 24px;
+    }
+
+    .hero-sub {
+      font-family: var(--font-geist);
+      font-size: var(--text-body);
+      line-height: var(--leading-body);
+      color: var(--color-charcoal);
+      max-width: 520px;
+      margin-bottom: 32px;
+    }
+
+    /* 马克笔高亮（橙色 + 手绘下划线） */
+    .marker {
+      color: var(--color-marker-orange);
+      font-weight: 600;
+      position: relative;
+      white-space: nowrap;
+    }
+    .marker::after {
+      content: "";
+      position: absolute;
+      left: -1%;
+      right: -1%;
+      bottom: -3px;
+      height: 9px;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 12' preserveAspectRatio='none'%3E%3Cpath d='M2 8 Q 12 2 24 8 T 48 8 T 72 8 T 96 8 T 118 8' fill='none' stroke='%23ff6f1e' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center / 100% 100%;
+    }
+
+    .hero-cta { display: flex; flex-direction: column; gap: 12px; align-items: flex-start; }
+    .hero-cta .quiet {
+      font-family: var(--font-gelica);
+      font-size: 16px;
+      color: var(--color-cocoa-ink);
+      padding-left: 4px;
+    }
+
+    /* 右侧：姓名标签贴纸 */
+    .hero-right {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      padding: 24px 0;
+    }
+    .name-label {
+      background: #ffffff;
+      border: 1.5px solid var(--color-charcoal);
+      border-radius: 8px;
+      padding: 28px 24px;
+      width: 280px;
+      transform: rotate(3deg);
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      z-index: 2;
+    }
+    .name-label .label-head {
+      font-family: var(--font-geist);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--color-fog, #93979f);
+      margin-bottom: 16px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .name-label .field {
+      border-top: 1px dashed var(--color-charcoal);
+      padding: 12px 0;
+    }
+    .name-label .field:last-child { border-bottom: 1px dashed var(--color-charcoal); }
+    .name-label .field .k {
+      font-family: var(--font-geist);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #93979f;
+      margin-bottom: 2px;
+    }
+    .name-label .field .v {
+      font-family: var(--font-gelica);
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--color-charcoal);
+    }
+
+    /* 贴纸插画 */
+    .sticker {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 54px;
+      height: 54px;
+      background: #ffffff;
+      border: 2px solid var(--color-charcoal);
+      border-radius: 12px;
+      font-size: 26px;
+      box-shadow: var(--shadow-lg);
+      position: absolute;
+    }
+    .sticker.st1 { top: 0; left: 12%; transform: rotate(-8deg); }
+    .sticker.st2 { top: 6px; right: 6%; transform: rotate(10deg); }
+    .sticker.st3 { bottom: 4px; left: 4%; transform: rotate(-12deg); }
+    .sticker.st4 { bottom: -8px; right: 16%; transform: rotate(7deg); }
+    .sticker.st5 { top: 46%; left: -4%; transform: rotate(14deg); }
+
+    /* ===== 贴纸分隔带 ===== */
+    .sticker-divider {
+      border-top: 1.5px dashed var(--color-charcoal);
+      border-bottom: 1.5px dashed var(--color-charcoal);
+      padding: 20px 0;
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      overflow: hidden;
+    }
+    .sticker-divider .sticker {
+      position: static;
+      flex-shrink: 0;
+    }
+    .sticker-divider .sticker:nth-child(1) { transform: rotate(-6deg); }
+    .sticker-divider .sticker:nth-child(2) { transform: rotate(8deg); }
+    .sticker-divider .sticker:nth-child(3) { transform: rotate(-10deg); }
+    .sticker-divider .sticker:nth-child(4) { transform: rotate(12deg); }
+    .sticker-divider .sticker:nth-child(5) { transform: rotate(-5deg); }
+    .sticker-divider .sticker:nth-child(6) { transform: rotate(9deg); }
+
+    /* ===== 区块 ===== */
+    section { padding: var(--section-gap) 24px; }
+    .container { max-width: var(--page-max-width); margin: 0 auto; }
+
+    .section-header { margin-bottom: 40px; }
+    .section-header .hand-caption {
+      display: inline-block;
+      font-size: 20px;
+      transform: rotate(-3deg);
+      margin-bottom: 12px;
+    }
+    .section-header h2 {
+      font-family: var(--font-gelica);
+      font-weight: 800;
+      font-size: clamp(36px, 5vw, 46px);
+      line-height: var(--leading-heading-lg);
+      letter-spacing: normal;
+      color: var(--color-cocoa-ink);
+    }
+
+    /* ===== 关于我 ===== */
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: var(--element-gap);
+    }
+    .about-card {
+      background: var(--color-dew-drop);
+      border: 1.5px solid var(--color-charcoal);
+      border-radius: var(--radius-cards);
+      padding: var(--card-padding);
+      box-shadow: var(--shadow-lg);
+    }
+    .about-card .emoji { font-size: 32px; display: block; margin-bottom: 12px; }
+    .about-card h3 {
+      font-family: var(--font-gelica);
+      font-weight: 700;
+      font-size: var(--text-heading-sm);
+      color: var(--color-charcoal);
+      margin-bottom: 8px;
+    }
+    .about-card p {
+      font-family: var(--font-geist);
+      font-size: var(--text-body-sm);
+      line-height: var(--leading-body-sm);
+      color: var(--color-charcoal);
+    }
+
+    /* ===== 技能（药丸标签） ===== */
+    .skill-group { margin-bottom: 32px; }
+    .skill-group .group-label {
+      font-family: var(--font-gelica);
+      font-weight: 600;
+      font-size: 20px;
+      color: var(--color-marker-orange);
+      transform: rotate(-2deg);
+      display: inline-block;
+      margin-bottom: 16px;
+    }
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .tag {
+      font-family: var(--font-gelica);
+      font-weight: 500;
+      font-size: 16px;
+      color: var(--color-charcoal);
+      background: var(--color-cream-paper);
+      border: 1.5px solid var(--color-charcoal);
+      border-radius: var(--radius-tags);
+      padding: 8px 20px;
+    }
+    .tag.green { border-color: var(--color-sprout-sticker); }
+
+    /* ===== 项目 ===== */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--element-gap);
+    }
+    .project-card {
+      background: var(--color-cream-paper);
+      border: 1.5px solid var(--color-charcoal);
+      border-radius: var(--radius-cards);
+      padding: var(--card-padding);
+      box-shadow: var(--shadow-lg);
+      display: flex;
+      flex-direction: column;
+    }
+    .project-card .tag { align-self: flex-start; margin-bottom: 16px; font-size: 14px; }
+    .project-card h3 {
+      font-family: var(--font-gelica);
+      font-weight: 700;
+      font-size: var(--text-heading-sm);
+      color: var(--color-charcoal);
+      margin-bottom: 8px;
+    }
+    .project-card p {
+      font-family: var(--font-geist);
+      font-size: var(--text-body-sm);
+      line-height: var(--leading-body-sm);
+      color: var(--color-charcoal);
+      flex: 1;
+      margin-bottom: 20px;
+    }
+    .project-card .link {
+      font-family: var(--font-gelica);
+      font-weight: 600;
+      font-size: 16px;
+      color: var(--color-burnt-sienna);
+      text-decoration: none;
+    }
+    .project-card .link:hover { text-decoration: underline; }
+
+    /* ===== 联系 ===== */
+    .contact-block {
+      max-width: 640px;
+    }
+    .contact-block h2 {
+      font-family: var(--font-gelica);
+      font-weight: 800;
+      font-size: clamp(36px, 5vw, 46px);
+      line-height: 1.2;
+      color: var(--color-cocoa-ink);
+      margin-bottom: 16px;
+    }
+    .contact-block p {
+      font-family: var(--font-geist);
+      font-size: var(--text-body);
+      color: var(--color-charcoal);
+      margin-bottom: 28px;
+    }
+    .contact-block .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+    .contact-block .quiet {
+      font-family: var(--font-gelica);
+      font-size: 16px;
+      color: var(--color-cocoa-ink);
+    }
+
+    /* ===== 页脚品牌带 ===== */
+    footer {
+      margin-top: 48px;
+      background: var(--color-marker-orange);
+      border-radius: 56px 56px 0 0;
+      padding: 48px 24px 40px;
+      text-align: center;
+      color: var(--color-charcoal);
+    }
+    footer .brand-line {
+      font-family: var(--font-gelica);
+      font-weight: 800;
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+    footer p {
+      font-family: var(--font-geist);
+      font-size: 16px;
+    }
+    footer .foot-stickers {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+    footer .foot-stickers .sticker { position: static; flex-shrink: 0; }
+
+    /* ===== 响应式 ===== */
+    @media (max-width: 860px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-right { order: -1; }
+      .nav-links { gap: 16px; }
+      .nav-links a { font-size: 16px; }
+      .sticker.st5 { display: none; }
+    }
+    @media (max-width: 560px) {
+      .nav-links { display: none; }
+      .hero { padding-top: 48px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 导航 -->
+  <nav>
+    <div class="nav-inner">
+      <a href="#home" class="brand-mark" aria-label="回到首页">✎</a>
+      <ul class="nav-links">
+        <li><a href="#about">关于</a></li>
+        <li><a href="#skills">技能</a></li>
+        <li><a href="#projects">项目</a></li>
+        <li><a href="#contact">联系</a></li>
+      </ul>
+      <a href="#contact" class="btn">联系我 <span class="arrow">→</span></a>
+    </div>
+  </nav>
+
+  <!-- 主视觉 -->
+  <header id="home" class="hero">
+    <div class="hero-left">
+      <span class="hand-caption">hi there, welcome ~</span>
+      <h1>你好，我是<br>你的名字</h1>
+      <p class="hero-sub">
+        热爱创造与分享的<span class="marker">全栈开发者</span>，
+        专注于构建简洁、优雅且实用的产品。
+      </p>
+      <div class="hero-cta">
+        <a href="#projects" class="btn">查看我的作品 <span class="arrow">→</span></a>
+        <span class="quiet">正在持续更新中 · 欢迎围观</span>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="name-label">
+        <div class="label-head"><span>name label</span><span>✦</span></div>
+        <div class="field">
+          <div class="k">Name / 姓名</div>
+          <div class="v">你的名字</div>
+        </div>
+        <div class="field">
+          <div class="k">Class / 角色</div>
+          <div class="v">全栈开发者</div>
+        </div>
+        <div class="field">
+          <div class="k">Roll no. / 编号</div>
+          <div class="v">No. 001</div>
+        </div>
+      </div>
+      <span class="sticker st1">⚡</span>
+      <span class="sticker st2">🐻</span>
+      <span class="sticker st3">💛</span>
+      <span class="sticker st4">👻</span>
+      <span class="sticker st5">✨</span>
+    </div>
+  </header>
+
+  <!-- 贴纸分隔带 -->
+  <div class="sticker-divider">
+    <span class="sticker">⚡</span>
+    <span class="sticker">🐻</span>
+    <span class="sticker">💛</span>
+    <span class="sticker">👻</span>
+    <span class="sticker">🐱</span>
+    <span class="sticker">✨</span>
+  </div>
+
+  <!-- 关于我 -->
+  <section id="about">
+    <div class="container">
+      <div class="section-header">
+        <span class="hand-caption">about me ~</span>
+        <h2>关于我</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-card">
+          <span class="emoji">🌟</span>
+          <h3>我是谁</h3>
+          <p>一名热爱技术的开发者，喜欢把想法变成现实。无论是网页、应用还是工具，我都享受从零到一创造的过程。</p>
+        </div>
+        <div class="about-card">
+          <span class="emoji">💡</span>
+          <h3>我的理念</h3>
+          <p>简洁胜过复杂，实用高于花哨。好的产品应该让用户感到自然、顺手，而不是被功能淹没。</p>
+        </div>
+        <div class="about-card">
+          <span class="emoji">🚀</span>
+          <h3>我的目标</h3>
+          <p>持续学习新技术，做出真正对他人有价值的作品，并与更多志同道合的人一起成长。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 技能 -->
+  <section id="skills">
+    <div class="container">
+      <div class="section-header">
+        <span class="hand-caption">my toolbox ~</span>
+        <h2>我的技能</h2>
+      </div>
+
+      <div class="skill-group">
+        <span class="group-label">前端开发 ↳</span>
+        <div class="tags">
+          <span class="tag">HTML</span>
+          <span class="tag">CSS</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">TypeScript</span>
+          <span class="tag">React</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <span class="group-label">后端开发 ↳</span>
+        <div class="tags">
+          <span class="tag green">Python</span>
+          <span class="tag green">Node.js</span>
+          <span class="tag green">数据库</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <span class="group-label">设计与工具 ↳</span>
+        <div class="tags">
+          <span class="tag">UI 设计</span>
+          <span class="tag">交互设计</span>
+          <span class="tag green">Git</span>
+          <span class="tag green">DevOps</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 项目 -->
+  <section id="projects">
+    <div class="container">
+      <div class="section-header">
+        <span class="hand-caption">my works ~</span>
+        <h2>我的作品</h2>
+      </div>
+      <div class="projects-grid">
+        <div class="project-card">
+          <span class="tag">Web 应用</span>
+          <h3>项目一</h3>
+          <p>一个帮助用户高效管理日常任务的应用，界面简洁、操作流畅。</p>
+          <a href="#" class="link">了解更多 →</a>
+        </div>
+        <div class="project-card">
+          <span class="tag green">开源工具</span>
+          <h3>项目二</h3>
+          <p>一款命令行工具，让开发者的重复性工作自动化，节省大量时间。</p>
+          <a href="#" class="link">了解更多 →</a>
+        </div>
+        <div class="project-card">
+          <span class="tag">个人网站</span>
+          <h3>项目三</h3>
+          <p>你正在浏览的这个主页，纯 HTML/CSS 构建，遵循现代设计规范。</p>
+          <a href="#" class="link">了解更多 →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 联系 -->
+  <section id="contact">
+    <div class="container">
+      <div class="contact-block">
+        <span class="hand-caption" style="margin-bottom:12px;">say hi ~</span>
+        <h2>一起做点有意思的事</h2>
+        <p>如果你有合作意向，或者只是想打个招呼，欢迎随时联系我。</p>
+        <div class="cta-row">
+          <a href="mailto:your-email@example.com" class="btn">📧 给我发邮件</a>
+          <a href="https://github.com/" target="_blank" class="btn">GitHub <span class="arrow">→</span></a>
+          <span class="quiet">通常 24 小时内回复</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 页脚品牌带 -->
+  <footer>
+    <div class="foot-stickers">
+      <span class="sticker">⚡</span>
+      <span class="sticker">💛</span>
+      <span class="sticker">✨</span>
+    </div>
+    <div class="brand-line">that's all, thanks ~</div>
+    <p>© 2025 我的个人主页 · 用 ❤️ 打造</p>
+  </footer>
+
+</body>
+</html>
