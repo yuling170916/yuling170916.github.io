@@ -10,7 +10,7 @@
 
 - [🌷 关于我](https://yuling170916.github.io/#about) · 用户需求 × 商业目标 × 模型能力
 - [🤖 What I'm Working On](https://yuling170916.github.io/#skills) · Agent / RAG / 企业 AI
-- [✍️ Research & Writing](https://yuling170916.github.io/#writing) · AI 产品研究与写作
+- [✍️ 最近在写](https://yuling170916.github.io/#writing) · AI 产品研究与写作
 - [🧩 我的作品](https://yuling170916.github.io/#projects) · 精选项目
 - [💬 联系我](https://yuling170916.github.io/#contact) · 邮箱 / 微信 / 社交平台
 

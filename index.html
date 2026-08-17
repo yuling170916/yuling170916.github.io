@@ -8,31 +8,31 @@
   <style>
     /* ===== 设计令牌：极简 · 内容优先（参考 rui.juzi.bot）===== */
     :root {
-      --bg: #fdfbf7;
-      --bg-soft: #f5efe5;
-      --bg-soft-2: #ede5d6;
-      --ink: #2b261f;
-      --ink-soft: #5b5347;
-      --ink-mute: #8b8171;
-      --ink-faint: #b3a794;
-      --rule: #eae2d5;
-      --accent: #c3772e;
-      --accent-hover: #a35e1e;
+      --bg: #f7f7f4;
+      --bg-soft: #efefeb;
+      --bg-soft-2: #e7e7e2;
+      --ink: #161616;
+      --ink-soft: #3d3d3d;
+      --ink-mute: #7a7a7a;
+      --ink-faint: #a6a6a6;
+      --rule: #e2e2dc;
+      --accent: #161616;
+      --accent-hover: #555555;
       --max: 1080px;
     }
 
     @media (prefers-color-scheme: dark) {
       :root {
-        --bg: #1e1a15;
-        --bg-soft: #29231c;
-        --bg-soft-2: #332c23;
-        --ink: #f0ebe2;
-        --ink-soft: #c9c1b3;
-        --ink-mute: #948b7b;
-        --ink-faint: #6f6759;
-        --rule: #393229;
-        --accent: #dd9e52;
-        --accent-hover: #e8b978;
+        --bg: #1a1a1a;
+        --bg-soft: #242424;
+        --bg-soft-2: #2c2c2c;
+        --ink: #e8e8e8;
+        --ink-soft: #b8b8b8;
+        --ink-mute: #8a8a8a;
+        --ink-faint: #666666;
+        --rule: #333333;
+        --accent: #e8e8e8;
+        --accent-hover: #ffffff;
       }
     }
 
@@ -119,7 +119,7 @@
     .topnav nav a.nav-ext:hover {
       color: var(--accent);
       border-color: var(--accent);
-      background: rgba(195, 119, 46, 0.08);
+      background: rgba(22, 22, 22, 0.06);
       text-decoration: none;
     }
 
@@ -177,55 +177,41 @@
     }
     .toc .home-cards { margin: 0 0 12px; }
     .home-card {
-      position: relative;
-      display: grid;
-      grid-template-columns: auto 1fr auto;
-      align-items: center;
-      gap: 18px;
-      padding: 22px 24px;
-      background: var(--bg-soft);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding: 26px 24px;
+      background: var(--bg);
       border: 1px solid var(--rule);
-      border-radius: 6px;
+      border-radius: 8px;
       color: var(--ink);
       text-decoration: none;
-      transition: border-color .15s, transform .15s, box-shadow .15s;
+      transition: border-color .15s, transform .15s;
     }
     .home-card:hover {
-      border-color: var(--accent);
-      transform: translateY(-1px);
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+      border-color: var(--ink-mute);
+      transform: translateY(-2px);
       text-decoration: none;
     }
+    .home-card h3 {
+      font-size: 14px;
+      font-weight: 500;
+      margin: 0;
+      color: var(--ink-mute);
+    }
     .home-card .hc-num {
-      font-size: 32px;
+      font-size: 60px;
       font-weight: 700;
-      color: var(--accent);
+      color: var(--ink);
       line-height: 1;
       font-variant-numeric: tabular-nums;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.03em;
     }
-    .home-card .hc-meta { min-width: 0; }
-    .home-card h3 {
-      font-size: 16px;
-      font-weight: 700;
-      margin: 0 0 4px;
-      color: var(--ink);
-      letter-spacing: -0.005em;
-    }
-    .home-card .hc-meta p {
-      font-size: 12px;
+    .home-card .hc-sub {
+      font-size: 13px;
       color: var(--ink-mute);
       margin: 0;
       line-height: 1.5;
-    }
-    .home-card .hc-arrow {
-      font-size: 18px;
-      color: var(--ink-mute);
-      transition: color .15s, transform .15s;
-    }
-    .home-card:hover .hc-arrow {
-      color: var(--accent);
-      transform: translateX(3px);
     }
 
     /* ===== 双栏布局 ===== */
@@ -307,6 +293,36 @@
     }
     .entry-more:hover { text-decoration: underline; }
 
+    /* 文章列表 */
+    .writing-entry {
+      padding: 4px 0 28px;
+      margin-bottom: 28px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .writing-entry:last-child { border-bottom: none; margin-bottom: 0; }
+    .writing-title {
+      font-size: 22px;
+      font-weight: 600;
+      line-height: 1.4;
+      letter-spacing: -0.01em;
+      margin: 0 0 8px;
+      color: var(--ink);
+    }
+    .writing-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+      font-size: 13px;
+      color: var(--ink-mute);
+    }
+    .writing-excerpt {
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--ink-soft);
+      margin: 0;
+    }
+
     /* 关于我列表 */
     .about-lead {
       font-size: 15px;
@@ -361,14 +377,14 @@
     .project-cover.cover-code {
       display: flex;
       flex-direction: column;
-      background: #20180f;
-      border-color: #3a2d1c;
+      background: #1a1a1a;
+      border-color: #2f2f2f;
     }
     .cover-code .code-bar {
       display: flex;
       gap: 6px;
       padding: 9px 12px;
-      border-bottom: 1px solid rgba(217, 180, 130, 0.18);
+      border-bottom: 1px solid rgba(200, 200, 200, 0.16);
     }
     .cover-code .code-bar i {
       width: 10px;
@@ -385,7 +401,7 @@
       font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
       font-size: 12px;
       line-height: 1.6;
-      color: #efe7d8;
+      color: #e8e8e8;
       overflow: hidden;
     }
     .cover-code .code-line {
@@ -396,13 +412,13 @@
       display: inline-block;
       width: 16px;
       margin-right: 10px;
-      color: #7a6c55;
+      color: #666666;
       text-align: right;
       user-select: none;
     }
-    .cover-code .c-kw { color: #e0a45c; }
-    .cover-code .c-var { color: #f7f1e6; font-weight: 600; }
-    .cover-code .c-str { color: #e6c58f; }
+    .cover-code .c-kw { color: #f0f0f0; }
+    .cover-code .c-var { color: #f5f5f5; font-weight: 600; }
+    .cover-code .c-str { color: #b0b0b0; }
     .project-body .entry-head { margin-bottom: 8px; }
     .project-body .entry-title { font-size: 18px; }
 
@@ -481,7 +497,7 @@
     .btn:hover {
       color: var(--accent);
       border-color: var(--accent);
-      background: rgba(195, 119, 46, 0.08);
+      background: rgba(22, 22, 22, 0.06);
       text-decoration: none;
     }
     .contact-note {
@@ -583,14 +599,9 @@
     }
 
     .sidebar .about-box {
-      background: var(--bg-soft);
-      border: 1px solid var(--rule);
-      padding: 16px;
-      border-radius: 4px;
-      font-size: 13px;
+      font-size: 14px;
       color: var(--ink-soft);
-      line-height: 1.75;
-      text-align: center;
+      line-height: 1.8;
     }
     .sidebar .about-avatar {
       width: 96px;
@@ -664,7 +675,7 @@
         <a href="#home" class="active">首页</a>
         <a href="#about">关于</a>
         <a href="#skills">Working On</a>
-        <a href="#writing">Research</a>
+        <a href="#writing">博客</a>
         <a href="#projects">项目</a>
         <a href="#contact">联系</a>
         <a href="https://github.com/yuling170916" target="_blank" rel="noopener" class="nav-ext">GitHub ↗</a>
@@ -690,28 +701,19 @@
       <h2 class="toc-title">目录 · Contents</h2>
       <div class="home-cards">
         <a href="#about" class="home-card">
+          <h3>关于我</h3>
           <span class="hc-num">4</span>
-          <span class="hc-meta">
-            <h3>关于我</h3>
-            <p>方向 · 擅长 · 关注 · 交流</p>
-          </span>
-          <span class="hc-arrow">→</span>
+          <p class="hc-sub">方向 · 擅长 · 关注 · 交流</p>
         </a>
         <a href="#skills" class="home-card">
+          <h3>Working On</h3>
           <span class="hc-num">5</span>
-          <span class="hc-meta">
-            <h3>Working On</h3>
-            <p>Agent · RAG · 企业 AI</p>
-          </span>
-          <span class="hc-arrow">→</span>
+          <p class="hc-sub">Agent · RAG · 企业 AI</p>
         </a>
         <a href="#projects" class="home-card">
+          <h3>我的作品</h3>
           <span class="hc-num">3</span>
-          <span class="hc-meta">
-            <h3>我的作品</h3>
-            <p>精选项目，持续更新</p>
-          </span>
-          <span class="hc-arrow">→</span>
+          <p class="hc-sub">精选项目，持续更新</p>
         </a>
       </div>
     </section>
@@ -750,18 +752,42 @@
           </ul>
         </section>
 
-        <!-- Research & Writing -->
+        <!-- 最近在写 -->
         <section id="writing">
           <div class="feed-head">
-            <h2>Research & Writing</h2>
+            <h2>最近在写</h2>
+            <a href="#writing" class="feed-more">全部 →</a>
           </div>
-          <ul class="about-list">
-            <li><strong>企业 AI 产品</strong> 为什么经常停留在 <strong>Demo</strong> 阶段</li>
-            <li><strong>Agent</strong>、<strong>Context Engineering</strong> 与 <strong>Harness Engineering</strong></li>
-            <li><strong>RAG</strong>、<strong>Workflow</strong> 和 <strong>知识库</strong> 的 <strong>生产级落地</strong></li>
-            <li>从 <strong>AI 研发</strong> 到 <strong>AI 产品</strong> 与 <strong>FDE</strong> 的转型实践</li>
-            <li><strong>DeepSeek Harness Plugins</strong></li>
-          </ul>
+          <article class="writing-entry">
+            <h3 class="writing-title">企业 AI 产品为什么经常停留在 Demo 阶段</h3>
+            <div class="writing-meta"><span class="entry-cat">AI · 产品</span></div>
+            <p class="writing-excerpt">从 Demo 到规模化交付，企业 AI 产品需要跨越的鸿沟。</p>
+            <a class="entry-more" href="#writing">继续读 →</a>
+          </article>
+          <article class="writing-entry">
+            <h3 class="writing-title">Agent、Context Engineering 与 Harness Engineering</h3>
+            <div class="writing-meta"><span class="entry-cat">Agent</span></div>
+            <p class="writing-excerpt">把上下文工程变成可交付的产品能力。</p>
+            <a class="entry-more" href="#writing">继续读 →</a>
+          </article>
+          <article class="writing-entry">
+            <h3 class="writing-title">RAG、Workflow 和知识库的生产级落地</h3>
+            <div class="writing-meta"><span class="entry-cat">RAG</span></div>
+            <p class="writing-excerpt">从原型到生产，踩过的坑与解法。</p>
+            <a class="entry-more" href="#writing">继续读 →</a>
+          </article>
+          <article class="writing-entry">
+            <h3 class="writing-title">从 AI 研发到 AI 产品与 FDE 的转型实践</h3>
+            <div class="writing-meta"><span class="entry-cat">FDE</span></div>
+            <p class="writing-excerpt">一次职业转型的复盘与思考。</p>
+            <a class="entry-more" href="#writing">继续读 →</a>
+          </article>
+          <article class="writing-entry">
+            <h3 class="writing-title">DeepSeek Harness Plugins</h3>
+            <div class="writing-meta"><span class="entry-cat">工程</span></div>
+            <p class="writing-excerpt">用插件扩展 Harness 的能力边界。</p>
+            <a class="entry-more" href="#writing">继续读 →</a>
+          </article>
         </section>
 
         <!-- 项目 -->
@@ -842,8 +868,9 @@
 
         <div class="widget">
           <div class="about-box">
-            <p><strong>于铃</strong>，一名关注真实用户价值与 AI 落地的产品经理。</p>
-            <p>关注 AI 能否融入真实业务，被用户稳定使用，并产出可验证的交付结果。</p>
+            <p><strong>于铃</strong>，AI 产品经理，关注真实用户价值与 AI 落地。</p>
+            <p>站在用户需求、商业目标与模型能力的交叉点，把模糊的问题变成清晰的产品路径。</p>
+            <p>相信好的 AI 产品不只“能做到”，还要让人愿意用、持续用，并被数据验证。</p>
           </div>
         </div>
 
@@ -867,7 +894,7 @@
         </div>
 
         <div class="widget">
-          <h3>Research & Writing</h3>
+          <h3>最近在写</h3>
           <ul>
             <li><a href="#writing">企业 AI 产品为何停留在 Demo</a></li>
             <li><a href="#writing">Agent 与 Harness Engineering</a></li>
@@ -898,7 +925,7 @@
       <nav class="footer-nav">
         <a href="#about">关于</a>
         <a href="#skills">Working On</a>
-        <a href="#writing">Research</a>
+        <a href="#writing">博客</a>
         <a href="#projects">项目</a>
         <a href="#contact">联系</a>
         <a href="https://github.com/yuling170916" target="_blank" rel="noopener">GitHub</a>
